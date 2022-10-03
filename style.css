@@ -1,0 +1,326 @@
+@import url('http://fonts.cdnfonts.com/css/kg-red-hands');
+
+:root {
+    --base-animation-rewind-delay: .5s;
+}
+
+* {
+    font-family: 'KG Red Hands', sans-serif;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, rgb(100, 100, 255) 0%, rgb(100, 100, 255) 50%, rgb(255, 100, 100) 50%);
+    overflow: hidden;
+    background-size: 200% 100%;
+    background-position: 50% 100%;
+}
+
+canvas {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+}
+
+header {
+    position: relative;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 3s;
+    transition-timing-function: cubic-bezier(.8,0,1,.8);
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+}
+
+#alerts {
+    position: absolute;
+    top: 30%;
+    font-size: 100px;
+    -webkit-text-stroke: 5px black;
+    color: white;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+}
+
+#details {
+    position: absolute;
+    top: calc(50%);
+    font-size: 40px;
+    -webkit-text-stroke: 3px black;
+    color: white;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+}
+
+.inputs {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.inputs input {
+    display: block;
+    width: 60%;
+    margin: auto;
+    margin-top: 50px;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 30px;
+}
+
+.inputs input::placeholder {
+    color:rgb(150, 150, 150);
+    transition: color .5s, transform .5s;
+    text-shadow: 1px 1px 0px black;
+}
+
+.inputs #player1,
+.inputs #player2 {
+    animation-name: initanim;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0,0,.25,1.25);
+    transform: translateY(1000%);
+}
+
+.inputs #player1[init],
+.inputs #player2[init] {
+    transform: translateY(0px);
+}
+
+.inputs #player1[ready],
+.inputs #player2[ready] {
+    animation-name: initanim;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0,0,.25,1.25);
+    animation-direction: reverse;
+    transform: translate(0px);
+}
+
+.inputs #player1[ready] {
+    animation-delay: var(--base-animation-rewind-delay) + .2s;
+}
+
+.inputs #player2[ready] {
+    animation-delay: var(--base-animation-rewind-delay) + .1s;
+}
+
+.inputs #player1 {
+    animation-delay: 1s;
+}
+
+.inputs #player2 {
+    animation-delay: 1.5s;
+}
+
+.inputs #ready {
+    margin-top: 50px;
+    padding: 10px;
+    width: 200px;
+    font-size: 30px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 5px 0px black;
+    background-position: 0% 0%;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 15%, rgba(255,0,0,1) 15%, rgba(255,0,0,1) 30%, rgba(255,119,0,1) 30%, rgba(255,119,0,1) 45%, rgba(255,255,0,1) 45%, rgba(255,255,0,1) 60%, rgba(0,255,0,1) 60%, rgba(0,255,0,1) 75%, rgba(0,0,255,1) 75%, rgba(0,0,255,1) 90%, rgba(255,0,255,1) 90%);
+    -webkit-transition: background-position 2s, color 1s, background 1s;
+    transition: background-position 2s, color 1s, background 1s;
+    transition-timing-function: ease-in;
+    background-size: 1000% 100%;
+    cursor: pointer;
+}
+
+.inputs #ready:disabled {
+    color: dimgray;
+    background: darkgray;
+    cursor: not-allowed !important;
+}
+
+.inputs #ready[ready] {
+    background-position: 100% 0%;
+    box-shadow: 0px -5px 0px black;
+    animation-name: initanim;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0,0,.25,1.25);
+    animation-fill-mode: forwards;
+    animation-direction: reverse;
+    animation-delay: var(--base-animation-rewind-delay);
+}
+
+.inputs #ready[init] {
+    animation-name: initanim;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0,0,.25,1.25);
+    animation-delay: 2s;
+    transform: translateY(1000%);
+}
+
+.inputs #ready:hover:not([disabled]):not([ready]) {
+    animation-name: twist;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.75, 0, .25, 1);
+}
+
+.inputs #player1:hover::placeholder,
+.inputs #player2:hover::placeholder {
+    color: rgb(220, 220, 220);
+    transform: scale(1.05) translateX(20px);
+}
+
+.title {
+    text-align: center;
+    width: auto;
+    height: 100px;
+    padding-top: 200px;
+    animation-name: initanim;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0, 0, .25, 1.25);
+    transform: translateY(600%);
+}
+
+.title[init] {
+    text-align: center;
+    width: auto;
+    height: 100px;
+    padding-top: 200px;
+    transform: translateY(0px);
+}
+
+.title[ready] {
+    animation-name: initanim;
+    animation-duration: 2s;
+    animation-iteration-count: 2;
+    animation-timing-function: cubic-bezier(0, 0, .25, 1.25);
+    animation-direction: reverse;
+    animation-fill-mode: backwards;
+    animation-delay: var(--base-animation-rewind-delay) - .3s;
+    transform: translateY(0%);
+}
+
+.title .r {
+    color: transparent;
+    background: rgb(255, 0, 0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 5px 3px rgba(255, 255, 255, 0.5);
+    -webkit-text-stroke: 2px black;
+}
+
+.title .b {
+    color: transparent;
+    background: rgb(0, 0, 255);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 5px 3px rgba(255, 255, 255, 0.5);
+    -webkit-text-stroke: 2px black;
+}
+
+.title span {
+    text-align: center;
+    font-size: 80px;
+    width: fit-content;
+    height: fit-content;
+    width: auto;
+    height: 100px;
+}
+
+.title .title-anim1 {
+    width: auto;
+    height: 100px;
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.25, .75, .75, .25);
+}
+
+.title .title-anim2 {
+    width: auto;
+    height: 100px;
+    animation-name: twist;
+    animation-delay: -1s;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.75, 0, .25, 1);
+}
+
+.game-info {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.game-info .info-anim {
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.25, .75, .75, .25);
+    font-size: 25px;
+}
+
+.game-info .one-pos {
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    transform: rotate(10deg);
+    top: 10%;
+    left: 60%;
+}
+
+.game-info .two-pos {
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    transform: rotate(-10deg);
+    top: 80%;
+    left: 5%;
+}
+
+@keyframes initanim {
+    from {
+        transform: translateY(1000%);
+    }
+
+    to {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(0.9);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(0.9);
+    }
+}
+
+@keyframes twist {
+    0% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+
+    100% {
+        transform: rotate(-5deg);
+    }
+}

@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Finger Battle! | By Richard Opris</title>
+</head>
+<body>
+    <header>
+        <div class="title">
+            <div class="title-anim1">
+                <div class="title-anim2">
+                    <span>
+                        <span class="r">Finger</span> 
+                        <span class="b">Battle</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="inputs">
+            <input id="player1" placeholder="Player 1" maxlength="15">
+            <input id="player2" placeholder="Player 2" maxlength="15">
+            <button id="ready" init disabled>Ready!</button>
+        </div>
+
+        <div class="game-info">
+            <div class="one-pos">
+                <div class="info-anim">
+                    <span class="one-content">Click faster than your opponent!</span>
+                </div>
+            </div>
+            <div class="two-pos">
+                <div class="info-anim">
+                    <span class="two-content">Winner gets bragging rights :O</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <span id="alerts"></span>
+    <span id="details"></span>
+    <canvas id="game"></canvas>
+    <script src="script.js"></script>
+</body>
+</html>
