@@ -1,0 +1,19 @@
+{
+  "name": "fingerbattle",
+  "version": "1.1.0",
+  "description": "Fingerbattle!",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChezCoder/Finger-Battle.git"
+  },
+  "author": "ChezCoder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChezCoder/Finger-Battle/issues"
+  },
+  "homepage": "https://github.com/ChezCoder/Finger-Battle#readme"
+}
